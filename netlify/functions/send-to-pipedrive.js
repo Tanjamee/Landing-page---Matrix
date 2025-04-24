@@ -3,6 +3,6 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: "Test function response" }),
+    body: JSON.stringify({ message: "Hello from Netlify!" }),
   };
 };
