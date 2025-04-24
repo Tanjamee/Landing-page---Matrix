@@ -49,18 +49,31 @@
 </head>
 <body>
   <h1>Sign up for Weighted Decision Matrix</h1>
-  <form onsubmit="handleSignup(event)">
+  <form name="signup" id="signup-form">
     <input type="email" name="email" placeholder="Enter your email" required />
-    <button type="submit">Send</button>
+    <button type="submit">Sign Up</button>
   </form>
-
+  
   <script>
-    function handleSignup(event) {
-      event.preventDefault();
-      const email = event.target.email.value;
-      alert(`Thanks! ${email} has been added.`);
-      event.target.reset();
-    }
-  </script>
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+  
+      const response = await fetch("/.netlify/functions/send-to-pipedrive", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
+      });
+  
+      if (response.ok) {
+        alert("Thanks for signing up!");
+        e.target.reset();
+      } else {
+        alert("Oops, something went wrong.");
+      }
+    });
+  </script>  
 </body>
 </html>
