@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 exports.handler = async (event) => {
   const { email } = JSON.parse(event.body);
 
-  const apiToken = "44d5333dc6088464f50f5fa5843cbcb245387712";
+  const apiToken = process.env.PIPEDRIVE_API;
   const endpoint = `https://api.pipedrive.com/v1/persons?api_token=${apiToken}`;
 
   const body = {
