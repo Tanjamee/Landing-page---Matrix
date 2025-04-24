@@ -59,7 +59,7 @@
       e.preventDefault();
       const email = e.target.email.value;
   
-      const response = await fetch("/.netlify/functions/send-to-pipedrive", {
+      const response = await fetch("/.netlify/functions/send-to-pipedrive-v2", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
