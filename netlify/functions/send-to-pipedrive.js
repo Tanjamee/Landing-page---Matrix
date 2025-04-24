@@ -1,5 +1,6 @@
 exports.handler = async (event) => {
-  console.log("✅ Function triggered!");
+  // Debug: function triggered again
+console.log("✅ Function triggered!");
   console.log("📡 Method:", event.httpMethod);
   console.log("🧾 Raw body:", event.body);
 
