@@ -1,5 +1,6 @@
 exports.handler = async (event) => {
   console.log("✅ Function triggered!");
+  console.log("Method:", event.httpMethod);
 
   if (event.httpMethod !== "POST") {
     return {
@@ -11,18 +12,17 @@ exports.handler = async (event) => {
   let data;
   try {
     data = JSON.parse(event.body);
-  } catch (error) {
-    console.error("❌ Failed to parse JSON:", error);
+    console.log("📬 Received email:", data.email); // 🔥 This should now show
+  } catch (err) {
+    console.error("❌ Error parsing body:", err);
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: "Invalid JSON" }),
+      body: JSON.stringify({ message: "Invalid request body" }),
     };
   }
 
-  console.log("📬 Received email:", data.email);
-
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: "Thanks for submitting!" }),
+    body: JSON.stringify({ message: "Thanks for signing up!" }),
   };
 };
