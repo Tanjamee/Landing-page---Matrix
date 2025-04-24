@@ -14,8 +14,9 @@
     body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      color: white;
+      color: black;
       overflow: hidden;
+      background-color: white;
     }
 
     #matrixCanvas {
@@ -33,7 +34,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: white(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.7);
       text-align: center;
       padding: 2rem;
     }
@@ -41,18 +42,18 @@
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
-      color: #00ffcc;
+      color: #00aa88;
     }
 
     p {
       font-size: 1.2rem;
       max-width: 600px;
       margin-bottom: 2rem;
-      color: #cccccc;
+      color: #444;
     }
 
     a.button {
-      background: #00ffcc;
+      background: #00aa88;
       color: white;
       padding: 12px 24px;
       border-radius: 6px;
@@ -62,7 +63,7 @@
     }
 
     a.button:hover {
-      background: #00ddaa;
+      background: #008877;
     }
   </style>
 </head>
@@ -82,16 +83,16 @@
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const letters = "アァイィウエカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
 
     const drops = Array.from({ length: columns }).fill(1);
 
     function drawMatrix() {
-      ctx.fillStyle = "white(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#00ffcc";
+      ctx.fillStyle = "#00aa88";
       ctx.font = fontSize + "px monospace";
 
       drops.forEach((y, x) => {
