@@ -1,0 +1,21 @@
+{
+  "name": "landing-page-project",
+  "version": "1.0.0",
+  "description": "A landing page for users interested in a matrix, integrated with Pipedrive CRM.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.4.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "author": "",
+  "license": "ISC"
+}
