@@ -1,5 +1,5 @@
 exports.handler = async (event) => {
-  console.log("✅ Function triggered!"); // This MUST appear in the logs
+  console.log("✅ Function triggered!");
 
   return {
     statusCode: 200,
