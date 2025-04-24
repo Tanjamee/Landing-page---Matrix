@@ -2,32 +2,18 @@ const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
   const { email } = JSON.parse(event.body);
-
   const apiToken = process.env.PIPEDRIVE_API;
-  const endpoint = `https://api.pipedrive.com/v1/persons?api_token=${apiToken}`;
 
-  const body = {
-    name: email.split("@")[0],
-    email: email
-  };
-
-  const response = await fetch(endpoint, {
+  const response = await fetch(`https://api.pipedrive.com/v1/persons?api_token=${apiToken}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
+    body: JSON.stringify({ name: email.split("@")[0], email })
   });
 
   const result = await response.json();
 
-  if (result.success) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Person added to Pipedrive" })
-    };
-  } else {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Failed to add person" })
-    };
-  }
+  return {
+    statusCode: result.success ? 200 : 500,
+    body: JSON.stringify(result)
+  };
 };
